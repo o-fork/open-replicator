@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,123 +16,123 @@
  */
 package com.google.code.or.binlog.impl.event;
 
-import java.util.List;
-
 import com.google.code.or.binlog.BinlogEventV4Header;
 import com.google.code.or.binlog.StatusVariable;
 import com.google.code.or.common.glossary.column.StringColumn;
 import com.google.code.or.common.util.MySQLConstants;
 import com.google.code.or.common.util.ToStringBuilder;
 
+import java.util.List;
+
 /**
- * 
+ *
  * @author Jingqi Xu
  */
 public final class QueryEvent extends AbstractBinlogEventV4 {
-	//
-	public static final int EVENT_TYPE = MySQLConstants.QUERY_EVENT;
-	
-	//
-	private long threadId;
-	private long elapsedTime;
-	private int databaseNameLength;
-	private int errorCode;
-	private int statusVariablesLength;
-	private List<StatusVariable> statusVariables;
-	private StringColumn databaseName;
-	private StringColumn sql;
-	
-	/**
-	 * 
-	 */
-	public QueryEvent() {
-	}
-	
-	public QueryEvent(BinlogEventV4Header header) {
-		this.header = header;
-	}
-	
-	/**
-	 * 
-	 */
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this)
-		.append("header", header)
-		.append("threadId", threadId)
-		.append("elapsedTime", elapsedTime)
-		.append("databaseNameLength", databaseNameLength)
-		.append("errorCode", errorCode)
-		.append("statusVariablesLength", statusVariablesLength)
-		.append("statusVariables", statusVariables)
-		.append("databaseName", databaseName)
-		.append("sql", sql).toString();
-	}
-	
-	/**
-	 * 
-	 */
-	public long getThreadId() {
-		return threadId;
-	}
+    //
+    public static final int EVENT_TYPE = MySQLConstants.QUERY_EVENT;
 
-	public void setThreadId(long threadId) {
-		this.threadId = threadId;
-	}
+    //
+    private long threadId;
+    private long elapsedTime;
+    private int databaseNameLength;
+    private int errorCode;
+    private int statusVariablesLength;
+    private List<StatusVariable> statusVariables;
+    private StringColumn databaseName;
+    private StringColumn sql;
 
-	public long getElapsedTime() {
-		return elapsedTime;
-	}
+    /**
+     *
+     */
+    public QueryEvent() {
+    }
 
-	public void setElapsedTime(long elapsedTime) {
-		this.elapsedTime = elapsedTime;
-	}
+    public QueryEvent(BinlogEventV4Header header) {
+        this.header = header;
+    }
 
-	public int getDatabaseNameLength() {
-		return databaseNameLength;
-	}
+    /**
+     *
+     */
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("header", header)
+                .append("threadId", threadId)
+                .append("elapsedTime", elapsedTime)
+                .append("databaseNameLength", databaseNameLength)
+                .append("errorCode", errorCode)
+                .append("statusVariablesLength", statusVariablesLength)
+                .append("statusVariables", statusVariables)
+                .append("databaseName", databaseName)
+                .append("sql", sql).toString();
+    }
 
-	public void setDatabaseNameLength(int databaseNameLength) {
-		this.databaseNameLength = databaseNameLength;
-	}
+    /**
+     *
+     */
+    public long getThreadId() {
+        return threadId;
+    }
 
-	public int getErrorCode() {
-		return errorCode;
-	}
+    public void setThreadId(long threadId) {
+        this.threadId = threadId;
+    }
 
-	public void setErrorCode(int errorCode) {
-		this.errorCode = errorCode;
-	}
+    public long getElapsedTime() {
+        return elapsedTime;
+    }
 
-	public int getStatusVariablesLength() {
-		return statusVariablesLength;
-	}
+    public void setElapsedTime(long elapsedTime) {
+        this.elapsedTime = elapsedTime;
+    }
 
-	public void setStatusVariablesLength(int statusVariableLength) {
-		this.statusVariablesLength = statusVariableLength;
-	}
+    public int getDatabaseNameLength() {
+        return databaseNameLength;
+    }
 
-	public List<StatusVariable> getStatusVariables() {
-		return statusVariables;
-	}
+    public void setDatabaseNameLength(int databaseNameLength) {
+        this.databaseNameLength = databaseNameLength;
+    }
 
-	public void setStatusVariables(List<StatusVariable> statusVariables) {
-		this.statusVariables = statusVariables;
-	}
+    public int getErrorCode() {
+        return errorCode;
+    }
 
-	public StringColumn getDatabaseName() {
-		return databaseName;
-	}
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
+    }
 
-	public void setDatabaseName(StringColumn databaseName) {
-		this.databaseName = databaseName;
-	}
+    public int getStatusVariablesLength() {
+        return statusVariablesLength;
+    }
 
-	public StringColumn getSql() {
-		return sql;
-	}
+    public void setStatusVariablesLength(int statusVariableLength) {
+        this.statusVariablesLength = statusVariableLength;
+    }
 
-	public void setSql(StringColumn sql) {
-		this.sql = sql;
-	}
+    public List<StatusVariable> getStatusVariables() {
+        return statusVariables;
+    }
+
+    public void setStatusVariables(List<StatusVariable> statusVariables) {
+        this.statusVariables = statusVariables;
+    }
+
+    public StringColumn getDatabaseName() {
+        return databaseName;
+    }
+
+    public void setDatabaseName(StringColumn databaseName) {
+        this.databaseName = databaseName;
+    }
+
+    public StringColumn getSql() {
+        return sql;
+    }
+
+    public void setSql(StringColumn sql) {
+        this.sql = sql;
+    }
 }

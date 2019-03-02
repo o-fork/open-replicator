@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,57 +16,57 @@
  */
 package com.google.code.or.binlog.impl.event;
 
-import java.util.Arrays;
-
 import com.google.code.or.binlog.BinlogEventV4Header;
 import com.google.code.or.common.util.ToStringBuilder;
 
+import java.util.Arrays;
+
 /**
- * 
+ *
  * @author brandtg
  */
 public class GtidEvent extends AbstractBinlogEventV4 {
-	//
-	private byte[] sourceId;
-	private long transactionId;
+    //
+    private byte[] sourceId;
+    private long transactionId;
 
-	/**
-	 * 
-	 */
-	public GtidEvent() {
-	}
-	
-	public GtidEvent(BinlogEventV4Header header) {
-		this.header = header;
-	}
+    /**
+     *
+     */
+    public GtidEvent() {
+    }
 
-	/**
-	 * 
-	 */
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this)
-		.append("header", header)
-		.append("transactionId", transactionId)
-		.append("sourceId", Arrays.toString(sourceId)).toString();
-	}
-	
-	/**
-	 * 
-	 */
-	public byte[] getSourceId() {
-		return sourceId;
-	}
+    public GtidEvent(BinlogEventV4Header header) {
+        this.header = header;
+    }
 
-	public void setSourceId(byte[] sourceId) {
-		this.sourceId = sourceId;
-	}
+    /**
+     *
+     */
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("header", header)
+                .append("transactionId", transactionId)
+                .append("sourceId", Arrays.toString(sourceId)).toString();
+    }
 
-	public long getTransactionId() {
-		return transactionId;
-	}
+    /**
+     *
+     */
+    public byte[] getSourceId() {
+        return sourceId;
+    }
 
-	public void setTransactionId(long transactionId) {
-		this.transactionId = transactionId;
-	}
+    public void setSourceId(byte[] sourceId) {
+        this.sourceId = sourceId;
+    }
+
+    public long getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(long transactionId) {
+        this.transactionId = transactionId;
+    }
 }

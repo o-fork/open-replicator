@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -26,104 +26,104 @@ import com.google.code.or.common.util.ToStringBuilder;
  * Written every time a statement uses a user variable; precedes other events for the statement. 
  * Indicates the value to use for the user variable in the next statement. 
  * This is written only before a QUERY_EVENT and is not used with row-based logging. 
- * 
+ *
  * @author Jingqi Xu
  */
 public final class UserVarEvent extends AbstractBinlogEventV4 {
-	//
-	public static final int EVENT_TYPE = MySQLConstants.USER_VAR_EVENT;
-	
-	//
-	private int varNameLength;
-	private StringColumn varName;
-	private int isNull;
-	private int varType;
-	private int varCollation;
-	private int varValueLength;
-	private UserVariable varValue;
-	
-	/**
-	 * 
-	 */
-	public UserVarEvent() {
-	}
-	
-	public UserVarEvent(BinlogEventV4Header header) {
-		this.header = header;
-	}
-	
-	/**
-	 * 
-	 */
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this)
-		.append("header", header)
-		.append("varNameLength", varNameLength)
-		.append("varName", varName)
-		.append("isNull", isNull)
-		.append("varType", varType)
-		.append("varCollation", varCollation)
-		.append("varValueLength", varValueLength)
-		.append("varValue", varValue).toString();
-	}
-	
-	/**
-	 * 
-	 */
-	public int getVarNameLength() {
-		return varNameLength;
-	}
+    //
+    public static final int EVENT_TYPE = MySQLConstants.USER_VAR_EVENT;
 
-	public void setVarNameLength(int varNameLength) {
-		this.varNameLength = varNameLength;
-	}
+    //
+    private int varNameLength;
+    private StringColumn varName;
+    private int isNull;
+    private int varType;
+    private int varCollation;
+    private int varValueLength;
+    private UserVariable varValue;
 
-	public StringColumn getVarName() {
-		return varName;
-	}
+    /**
+     *
+     */
+    public UserVarEvent() {
+    }
 
-	public void setVarName(StringColumn varName) {
-		this.varName = varName;
-	}
+    public UserVarEvent(BinlogEventV4Header header) {
+        this.header = header;
+    }
 
-	public int getIsNull() {
-		return isNull;
-	}
+    /**
+     *
+     */
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("header", header)
+                .append("varNameLength", varNameLength)
+                .append("varName", varName)
+                .append("isNull", isNull)
+                .append("varType", varType)
+                .append("varCollation", varCollation)
+                .append("varValueLength", varValueLength)
+                .append("varValue", varValue).toString();
+    }
 
-	public void setIsNull(int isNull) {
-		this.isNull = isNull;
-	}
+    /**
+     *
+     */
+    public int getVarNameLength() {
+        return varNameLength;
+    }
 
-	public int getVarType() {
-		return varType;
-	}
+    public void setVarNameLength(int varNameLength) {
+        this.varNameLength = varNameLength;
+    }
 
-	public void setVarType(int variableType) {
-		this.varType = variableType;
-	}
+    public StringColumn getVarName() {
+        return varName;
+    }
 
-	public int getVarCollation() {
-		return varCollation;
-	}
+    public void setVarName(StringColumn varName) {
+        this.varName = varName;
+    }
 
-	public void setVarCollation(int varCollation) {
-		this.varCollation = varCollation;
-	}
+    public int getIsNull() {
+        return isNull;
+    }
 
-	public int getVarValueLength() {
-		return varValueLength;
-	}
+    public void setIsNull(int isNull) {
+        this.isNull = isNull;
+    }
 
-	public void setVarValueLength(int varValueLength) {
-		this.varValueLength = varValueLength;
-	}
+    public int getVarType() {
+        return varType;
+    }
 
-	public UserVariable getVarValue() {
-		return varValue;
-	}
+    public void setVarType(int variableType) {
+        this.varType = variableType;
+    }
 
-	public void setVarValue(UserVariable varValue) {
-		this.varValue = varValue;
-	}
+    public int getVarCollation() {
+        return varCollation;
+    }
+
+    public void setVarCollation(int varCollation) {
+        this.varCollation = varCollation;
+    }
+
+    public int getVarValueLength() {
+        return varValueLength;
+    }
+
+    public void setVarValueLength(int varValueLength) {
+        this.varValueLength = varValueLength;
+    }
+
+    public UserVariable getVarValue() {
+        return varValue;
+    }
+
+    public void setVarValue(UserVariable varValue) {
+        this.varValue = varValue;
+    }
 }

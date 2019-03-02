@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,38 +16,38 @@
  */
 package com.google.code.or.net.impl.packet.command;
 
-import java.io.IOException;
-
 import com.google.code.or.common.util.MySQLConstants;
 import com.google.code.or.common.util.ToStringBuilder;
 
+import java.io.IOException;
+
 /**
- * 
+ *
  * @author Jingqi Xu
  */
 public class ComQuit extends AbstractCommandPacket {
-	//
-	private static final long serialVersionUID = 4569517082177697955L;
+    //
+    private static final long serialVersionUID = 4569517082177697955L;
 
-	/**
-	 * 
-	 */
-	public ComQuit() {
-		super(MySQLConstants.COM_QUIT);
-	}
+    /**
+     *
+     */
+    public ComQuit() {
+        super(MySQLConstants.COM_QUIT);
+    }
 
-	/**
-	 * 
-	 */
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this).toString();
-	}
-	
-	/**
-	 * 
-	 */
-	public byte[] getPacketBody() throws IOException {
-		return new byte[0];
-	}
+    /**
+     *
+     */
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).toString();
+    }
+
+    /**
+     *
+     */
+    public byte[] getPacketBody() throws IOException {
+        return new byte[0];
+    }
 }

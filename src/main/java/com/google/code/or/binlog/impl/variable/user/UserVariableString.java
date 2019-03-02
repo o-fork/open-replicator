@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,44 +20,44 @@ import com.google.code.or.common.util.MySQLConstants;
 import com.google.code.or.common.util.ToStringBuilder;
 
 /**
- * 
+ *
  * @author Jingqi Xu
  */
 public class UserVariableString extends AbstractUserVariable {
-	//
-	public static final int TYPE = MySQLConstants.STRING_RESULT;
+    //
+    public static final int TYPE = MySQLConstants.STRING_RESULT;
 
-	//
-	private final byte[] value;
-	private final int collation;
-	
-	/**
-	 * 
-	 */
-	public UserVariableString(byte[] value, int collation) {
-		super(TYPE);
-		this.value = value;
-		this.collation = collation;
-	}
+    //
+    private final byte[] value;
+    private final int collation;
 
-	/**
-	 * 
-	 */
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this)
-		.append("value", value)
-		.append("collation", collation).toString();
-	}
-	
-	/**
-	 * 
-	 */
-	public byte[] getValue() {
-		return this.value;
-	}
-	
-	public int getCollation() {
-		return collation;
-	}
+    /**
+     *
+     */
+    public UserVariableString(byte[] value, int collation) {
+        super(TYPE);
+        this.value = value;
+        this.collation = collation;
+    }
+
+    /**
+     *
+     */
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("value", value)
+                .append("collation", collation).toString();
+    }
+
+    /**
+     *
+     */
+    public byte[] getValue() {
+        return this.value;
+    }
+
+    public int getCollation() {
+        return collation;
+    }
 }

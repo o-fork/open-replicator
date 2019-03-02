@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,219 +16,219 @@
  */
 package com.google.code.or.net.impl.packet;
 
-import java.io.IOException;
-
 import com.google.code.or.common.glossary.column.StringColumn;
 import com.google.code.or.common.util.ToStringBuilder;
 import com.google.code.or.io.util.XDeserializer;
 import com.google.code.or.io.util.XSerializer;
 import com.google.code.or.net.Packet;
 
+import java.io.IOException;
+
 /**
- * 
+ *
  * @author Jingqi Xu
  */
 public class ResultSetFieldPacket extends AbstractPacket {
-	//
-	private static final long serialVersionUID = -6484191963940716299L;
-	
-	//
-	private StringColumn catalog;
-	private StringColumn db;
-	private StringColumn table;
-	private StringColumn orginalTable;
-	private StringColumn column;
-	private StringColumn originalColumn;
-	private int fixed12;
-	private int charset;
-	private long fieldLength;
-	private int fieldType;
-	private int fieldOptions;
-	private int decimalPrecision;
-	private int reserved;
-	private StringColumn defaultValue; // Optional
-	
-	/**
-	 * 
-	 */
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this)
-		.append("catalog", catalog)
-		.append("db", db)
-		.append("table", table)
-		.append("orginalTable", orginalTable)
-		.append("column", column)
-		.append("originalColumn", originalColumn)
-		.append("fixed12", fixed12)
-		.append("charset", charset)
-		.append("fieldLength", fieldLength)
-		.append("fieldType", fieldType)
-		.append("fieldOptions", fieldOptions)
-		.append("decimalPrecision", decimalPrecision)
-		.append("reserved", reserved)
-		.append("defaultValue", defaultValue).toString();
-	}
-	
-	/**
-	 * 
-	 */
-	public byte[] getPacketBody() {
-		final XSerializer s = new XSerializer(256);
-		s.writeLengthCodedString(this.catalog);
-		s.writeLengthCodedString(this.db);
-		s.writeLengthCodedString(this.table);
-		s.writeLengthCodedString(this.orginalTable);
-		s.writeLengthCodedString(this.column);
-		s.writeLengthCodedString(this.originalColumn);
-		s.writeInt(this.fixed12, 1);
-		s.writeInt(this.charset, 2);
-		s.writeLong(this.fieldLength, 4);
-		s.writeInt(this.fieldType, 1);
-		s.writeInt(this.fieldOptions, 2);
-		s.writeInt(this.decimalPrecision, 1);
-		s.writeInt(this.reserved, 2);
-		if(this.defaultValue != null) s.writeLengthCodedString(this.defaultValue);
-		return s.toByteArray();
-	}
-	
-	/**
-	 * 
-	 */
-	public StringColumn getCatalog() {
-		return catalog;
-	}
+    //
+    private static final long serialVersionUID = -6484191963940716299L;
 
-	public void setCatalog(StringColumn catalog) {
-		this.catalog = catalog;
-	}
+    //
+    private StringColumn catalog;
+    private StringColumn db;
+    private StringColumn table;
+    private StringColumn orginalTable;
+    private StringColumn column;
+    private StringColumn originalColumn;
+    private int fixed12;
+    private int charset;
+    private long fieldLength;
+    private int fieldType;
+    private int fieldOptions;
+    private int decimalPrecision;
+    private int reserved;
+    private StringColumn defaultValue; // Optional
 
-	public StringColumn getDb() {
-		return db;
-	}
+    /**
+     *
+     */
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("catalog", catalog)
+                .append("db", db)
+                .append("table", table)
+                .append("orginalTable", orginalTable)
+                .append("column", column)
+                .append("originalColumn", originalColumn)
+                .append("fixed12", fixed12)
+                .append("charset", charset)
+                .append("fieldLength", fieldLength)
+                .append("fieldType", fieldType)
+                .append("fieldOptions", fieldOptions)
+                .append("decimalPrecision", decimalPrecision)
+                .append("reserved", reserved)
+                .append("defaultValue", defaultValue).toString();
+    }
 
-	public void setDb(StringColumn db) {
-		this.db = db;
-	}
+    /**
+     *
+     */
+    public byte[] getPacketBody() {
+        final XSerializer s = new XSerializer(256);
+        s.writeLengthCodedString(this.catalog);
+        s.writeLengthCodedString(this.db);
+        s.writeLengthCodedString(this.table);
+        s.writeLengthCodedString(this.orginalTable);
+        s.writeLengthCodedString(this.column);
+        s.writeLengthCodedString(this.originalColumn);
+        s.writeInt(this.fixed12, 1);
+        s.writeInt(this.charset, 2);
+        s.writeLong(this.fieldLength, 4);
+        s.writeInt(this.fieldType, 1);
+        s.writeInt(this.fieldOptions, 2);
+        s.writeInt(this.decimalPrecision, 1);
+        s.writeInt(this.reserved, 2);
+        if (this.defaultValue != null) s.writeLengthCodedString(this.defaultValue);
+        return s.toByteArray();
+    }
 
-	public StringColumn getTable() {
-		return table;
-	}
+    /**
+     *
+     */
+    public StringColumn getCatalog() {
+        return catalog;
+    }
 
-	public void setTable(StringColumn table) {
-		this.table = table;
-	}
+    public void setCatalog(StringColumn catalog) {
+        this.catalog = catalog;
+    }
 
-	public StringColumn getOrginalTable() {
-		return orginalTable;
-	}
+    public StringColumn getDb() {
+        return db;
+    }
 
-	public void setOrginalTable(StringColumn orginalTable) {
-		this.orginalTable = orginalTable;
-	}
+    public void setDb(StringColumn db) {
+        this.db = db;
+    }
 
-	public StringColumn getColumn() {
-		return column;
-	}
+    public StringColumn getTable() {
+        return table;
+    }
 
-	public void setColumn(StringColumn column) {
-		this.column = column;
-	}
+    public void setTable(StringColumn table) {
+        this.table = table;
+    }
 
-	public StringColumn getOriginalColumn() {
-		return originalColumn;
-	}
+    public StringColumn getOrginalTable() {
+        return orginalTable;
+    }
 
-	public void setOriginalColumn(StringColumn originalColumn) {
-		this.originalColumn = originalColumn;
-	}
+    public void setOrginalTable(StringColumn orginalTable) {
+        this.orginalTable = orginalTable;
+    }
 
-	public int getFixed12() {
-		return fixed12;
-	}
+    public StringColumn getColumn() {
+        return column;
+    }
 
-	public void setFixed12(int fixed12) {
-		this.fixed12 = fixed12;
-	}
+    public void setColumn(StringColumn column) {
+        this.column = column;
+    }
 
-	public int getCharset() {
-		return charset;
-	}
+    public StringColumn getOriginalColumn() {
+        return originalColumn;
+    }
 
-	public void setCharset(int charset) {
-		this.charset = charset;
-	}
+    public void setOriginalColumn(StringColumn originalColumn) {
+        this.originalColumn = originalColumn;
+    }
 
-	public long getFieldLength() {
-		return fieldLength;
-	}
+    public int getFixed12() {
+        return fixed12;
+    }
 
-	public void setFieldLength(long fieldLength) {
-		this.fieldLength = fieldLength;
-	}
+    public void setFixed12(int fixed12) {
+        this.fixed12 = fixed12;
+    }
 
-	public int getFieldType() {
-		return fieldType;
-	}
+    public int getCharset() {
+        return charset;
+    }
 
-	public void setFieldType(int fieldType) {
-		this.fieldType = fieldType;
-	}
+    public void setCharset(int charset) {
+        this.charset = charset;
+    }
 
-	public int getFieldOptions() {
-		return fieldOptions;
-	}
+    public long getFieldLength() {
+        return fieldLength;
+    }
 
-	public void setFieldOptions(int fieldOptions) {
-		this.fieldOptions = fieldOptions;
-	}
+    public void setFieldLength(long fieldLength) {
+        this.fieldLength = fieldLength;
+    }
 
-	public int getDecimalPrecision() {
-		return decimalPrecision;
-	}
+    public int getFieldType() {
+        return fieldType;
+    }
 
-	public void setDecimalPrecision(int decimalPrecision) {
-		this.decimalPrecision = decimalPrecision;
-	}
+    public void setFieldType(int fieldType) {
+        this.fieldType = fieldType;
+    }
 
-	public int getReserved() {
-		return reserved;
-	}
+    public int getFieldOptions() {
+        return fieldOptions;
+    }
 
-	public void setReserved(int reserved) {
-		this.reserved = reserved;
-	}
+    public void setFieldOptions(int fieldOptions) {
+        this.fieldOptions = fieldOptions;
+    }
 
-	public StringColumn getDefaultValue() {
-		return defaultValue;
-	}
+    public int getDecimalPrecision() {
+        return decimalPrecision;
+    }
 
-	public void setDefaultValue(StringColumn defaultValue) {
-		this.defaultValue = defaultValue;
-	}
+    public void setDecimalPrecision(int decimalPrecision) {
+        this.decimalPrecision = decimalPrecision;
+    }
 
-	/**
-	 * 
-	 */
-	public static ResultSetFieldPacket valueOf(Packet packet) throws IOException {
-		final XDeserializer d = new XDeserializer(packet.getPacketBody());
-		final ResultSetFieldPacket r = new ResultSetFieldPacket();
-		r.fieldLength = packet.getLength();
-		r.sequence = packet.getSequence();
-		r.catalog = d.readLengthCodedString();
-		r.db = d.readLengthCodedString();
-		r.table = d.readLengthCodedString();
-		r.orginalTable = d.readLengthCodedString();
-		r.column = d.readLengthCodedString();
-		r.originalColumn = d.readLengthCodedString();
-		r.fixed12 = d.readInt(1);
-		r.charset = d.readInt(2);
-		r.fieldLength = d.readLong(4);
-		r.fieldType = d.readInt(1);
-		r.fieldOptions = d.readInt(2);
-		r.decimalPrecision = d.readInt(1);
-		r.reserved = d.readInt(2);
-		if(d.available() > 0) r.defaultValue = d.readLengthCodedString();
-		return r;
-	}
+    public int getReserved() {
+        return reserved;
+    }
+
+    public void setReserved(int reserved) {
+        this.reserved = reserved;
+    }
+
+    public StringColumn getDefaultValue() {
+        return defaultValue;
+    }
+
+    public void setDefaultValue(StringColumn defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+
+    /**
+     *
+     */
+    public static ResultSetFieldPacket valueOf(Packet packet) throws IOException {
+        final XDeserializer d = new XDeserializer(packet.getPacketBody());
+        final ResultSetFieldPacket r = new ResultSetFieldPacket();
+        r.fieldLength = packet.getLength();
+        r.sequence = packet.getSequence();
+        r.catalog = d.readLengthCodedString();
+        r.db = d.readLengthCodedString();
+        r.table = d.readLengthCodedString();
+        r.orginalTable = d.readLengthCodedString();
+        r.column = d.readLengthCodedString();
+        r.originalColumn = d.readLengthCodedString();
+        r.fixed12 = d.readInt(1);
+        r.charset = d.readInt(2);
+        r.fieldLength = d.readLong(4);
+        r.fieldType = d.readInt(1);
+        r.fieldOptions = d.readInt(2);
+        r.decimalPrecision = d.readInt(1);
+        r.reserved = d.readInt(2);
+        if (d.available() > 0) r.defaultValue = d.readLengthCodedString();
+        return r;
+    }
 }

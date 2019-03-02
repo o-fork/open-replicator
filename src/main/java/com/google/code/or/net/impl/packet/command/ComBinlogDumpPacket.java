@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,91 +16,91 @@
  */
 package com.google.code.or.net.impl.packet.command;
 
-import java.io.IOException;
-
 import com.google.code.or.common.glossary.column.StringColumn;
 import com.google.code.or.common.util.MySQLConstants;
 import com.google.code.or.common.util.ToStringBuilder;
 import com.google.code.or.io.util.XSerializer;
 
+import java.io.IOException;
+
 /**
- * 
+ *
  * @author Jingqi Xu
  */
 public class ComBinlogDumpPacket extends AbstractCommandPacket {
-	//
-	private static final long serialVersionUID = 449639496684376511L;
-	
-	//
-	private long binlogPosition;
-	private int binlogFlag;
-	private long serverId;
-	private StringColumn binlogFileName;
-	
-	/**
-	 * 
-	 */
-	public ComBinlogDumpPacket() {
-		super(MySQLConstants.COM_BINLOG_DUMP);
-	}
+    //
+    private static final long serialVersionUID = 449639496684376511L;
 
-	/**
-	 * 
-	 */
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this)
-		.append("binlogPosition", binlogPosition)
-		.append("binlogFlag", binlogFlag)
-		.append("serverId", serverId)
-		.append("binlogFileName", binlogFileName).toString();
-	}
-	
-	/**
-	 * 
-	 */
-	public byte[] getPacketBody() throws IOException {
-		final XSerializer ps = new XSerializer();
-		ps.writeInt(this.command, 1);
-		ps.writeLong(this.binlogPosition, 4);
-		ps.writeInt(this.binlogFlag, 2);
-		ps.writeLong(this.serverId, 4);
-		ps.writeFixedLengthString(this.binlogFileName);
-		return ps.toByteArray();
-	}
-	
-	/**
-	 * 
-	 */
-	public long getBinlogPosition() {
-		return binlogPosition;
-	}
+    //
+    private long binlogPosition;
+    private int binlogFlag;
+    private long serverId;
+    private StringColumn binlogFileName;
 
-	public void setBinlogPosition(long binlogPosition) {
-		this.binlogPosition = binlogPosition;
-	}
+    /**
+     *
+     */
+    public ComBinlogDumpPacket() {
+        super(MySQLConstants.COM_BINLOG_DUMP);
+    }
 
-	public int getBinlogFlag() {
-		return binlogFlag;
-	}
+    /**
+     *
+     */
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("binlogPosition", binlogPosition)
+                .append("binlogFlag", binlogFlag)
+                .append("serverId", serverId)
+                .append("binlogFileName", binlogFileName).toString();
+    }
 
-	public void setBinlogFlag(int binlogFlag) {
-		this.binlogFlag = binlogFlag;
-	}
+    /**
+     *
+     */
+    public byte[] getPacketBody() throws IOException {
+        final XSerializer ps = new XSerializer();
+        ps.writeInt(this.command, 1);
+        ps.writeLong(this.binlogPosition, 4);
+        ps.writeInt(this.binlogFlag, 2);
+        ps.writeLong(this.serverId, 4);
+        ps.writeFixedLengthString(this.binlogFileName);
+        return ps.toByteArray();
+    }
 
-	public long getServerId() {
-		return serverId;
-	}
+    /**
+     *
+     */
+    public long getBinlogPosition() {
+        return binlogPosition;
+    }
 
-	public void setServerId(long serverId) {
-		this.serverId = serverId;
-	}
+    public void setBinlogPosition(long binlogPosition) {
+        this.binlogPosition = binlogPosition;
+    }
 
-	public StringColumn getBinlogFileName() {
-		return binlogFileName;
-	}
+    public int getBinlogFlag() {
+        return binlogFlag;
+    }
 
-	public void setBinlogFileName(StringColumn binlogFileName) {
-		this.binlogFileName = binlogFileName;
-	}
+    public void setBinlogFlag(int binlogFlag) {
+        this.binlogFlag = binlogFlag;
+    }
+
+    public long getServerId() {
+        return serverId;
+    }
+
+    public void setServerId(long serverId) {
+        this.serverId = serverId;
+    }
+
+    public StringColumn getBinlogFileName() {
+        return binlogFileName;
+    }
+
+    public void setBinlogFileName(StringColumn binlogFileName) {
+        this.binlogFileName = binlogFileName;
+    }
 }

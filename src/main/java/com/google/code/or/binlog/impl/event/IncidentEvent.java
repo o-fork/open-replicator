@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,65 +25,65 @@ import com.google.code.or.common.util.ToStringBuilder;
  * Used to log an out of the ordinary event that occurred on the master. 
  * It notifies the slave that something happened on the master that might 
  * cause data to be in an inconsistent state. 
- * 
+ *
  * @author Jingqi Xu
  * @see sql/rpl_constants.h
  */
 public final class IncidentEvent extends AbstractBinlogEventV4 {
-	//
-	public static final int EVENT_TYPE = MySQLConstants.INCIDENT_EVENT;
-	
-	//
-	private int incidentNumber;
-	private int messageLength;
-	private StringColumn message;
-	
-	/**
-	 * 
-	 */
-	public IncidentEvent() {
-	}
-	
-	public IncidentEvent(BinlogEventV4Header header) {
-		this.header = header;
-	}
-	
-	/**
-	 * 
-	 */
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this)
-		.append("header", header)
-		.append("incidentNumber", incidentNumber)
-		.append("messageLength", messageLength)
-		.append("message", message).toString();
-	}
-	
-	/**
-	 * 
-	 */
-	public int getIncidentNumber() {
-		return incidentNumber;
-	}
+    //
+    public static final int EVENT_TYPE = MySQLConstants.INCIDENT_EVENT;
 
-	public void setIncidentNumber(int incidentNumber) {
-		this.incidentNumber = incidentNumber;
-	}
+    //
+    private int incidentNumber;
+    private int messageLength;
+    private StringColumn message;
 
-	public int getMessageLength() {
-		return messageLength;
-	}
+    /**
+     *
+     */
+    public IncidentEvent() {
+    }
 
-	public void setMessageLength(int messageLength) {
-		this.messageLength = messageLength;
-	}
+    public IncidentEvent(BinlogEventV4Header header) {
+        this.header = header;
+    }
 
-	public StringColumn getMessage() {
-		return message;
-	}
+    /**
+     *
+     */
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("header", header)
+                .append("incidentNumber", incidentNumber)
+                .append("messageLength", messageLength)
+                .append("message", message).toString();
+    }
 
-	public void setMessage(StringColumn message) {
-		this.message = message;
-	}
+    /**
+     *
+     */
+    public int getIncidentNumber() {
+        return incidentNumber;
+    }
+
+    public void setIncidentNumber(int incidentNumber) {
+        this.incidentNumber = incidentNumber;
+    }
+
+    public int getMessageLength() {
+        return messageLength;
+    }
+
+    public void setMessageLength(int messageLength) {
+        this.messageLength = messageLength;
+    }
+
+    public StringColumn getMessage() {
+        return message;
+    }
+
+    public void setMessage(StringColumn message) {
+        this.message = message;
+    }
 }

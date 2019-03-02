@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,42 +16,42 @@
  */
 package com.google.code.or.io;
 
-import java.io.IOException;
-
 import com.google.code.or.common.glossary.UnsignedLong;
 import com.google.code.or.common.glossary.column.StringColumn;
 
+import java.io.IOException;
+
 /**
- * 
+ *
  * @author Jingqi Xu
  */
 public interface XOutputStream {
-	
-	/**
-	 * 
-	 */
-	void flush() throws IOException;
-	
-	void close() throws IOException;
-	
-	/**
-	 * 
-	 */
-	void writeBytes(byte value[]) throws IOException;
-	
-	void writeBytes(int value, int length) throws IOException;
-	
-	void writeInt(int value, int length) throws IOException;
-	
-	void writeLong(long value, int length) throws IOException;
-	
-	void writeUnsignedLong(UnsignedLong value) throws IOException;
-	
-	void writeLengthCodedString(StringColumn value) throws IOException;
-	
-	void writeFixedLengthString(StringColumn value) throws IOException;
-	
-	void writeNullTerminatedString(StringColumn value) throws IOException;
-	
-	void writeBytes(byte value[], int offset, int length) throws IOException;
+
+    /**
+     *
+     */
+    void flush() throws IOException;
+
+    void close() throws IOException;
+
+    /**
+     *
+     */
+    void writeBytes(byte value[]) throws IOException;
+
+    void writeBytes(int value, int length) throws IOException;
+
+    void writeInt(int value, int length) throws IOException;
+
+    void writeLong(long value, int length) throws IOException;
+
+    void writeUnsignedLong(UnsignedLong value) throws IOException;
+
+    void writeLengthCodedString(StringColumn value) throws IOException;
+
+    void writeFixedLengthString(StringColumn value) throws IOException;
+
+    void writeNullTerminatedString(StringColumn value) throws IOException;
+
+    void writeBytes(byte value[], int offset, int length) throws IOException;
 }

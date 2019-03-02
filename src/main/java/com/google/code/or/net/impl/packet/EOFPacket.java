@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,101 +16,101 @@
  */
 package com.google.code.or.net.impl.packet;
 
-import java.io.IOException;
-
 import com.google.code.or.common.util.ToStringBuilder;
 import com.google.code.or.io.XInputStream;
 import com.google.code.or.io.util.XDeserializer;
 import com.google.code.or.io.util.XSerializer;
 import com.google.code.or.net.Packet;
 
+import java.io.IOException;
+
 /**
- * 
+ *
  * @author Jingqi Xu
  */
 public class EOFPacket extends AbstractPacket {
-	//
-	private static final long serialVersionUID = 7001637720833705527L;
-	
-	//
-	public static final byte PACKET_MARKER = (byte)0xFE;
+    //
+    private static final long serialVersionUID = 7001637720833705527L;
 
-	//
-	private int packetMarker;
-	private int warningCount;
-	private int serverStatus;
+    //
+    public static final byte PACKET_MARKER = (byte) 0xFE;
 
-	/**
-	 * 
-	 */
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this)
-		.append("packetMarker", packetMarker)
-		.append("warningCount", warningCount)
-		.append("serverStatus", serverStatus).toString();
-	}
-	
-	/**
-	 * 
-	 */
-	public byte[] getPacketBody() {
-		final XSerializer s = new XSerializer(32);
-		s.writeInt(this.packetMarker, 1);
-		s.writeInt(this.warningCount, 2);
-		s.writeInt(this.serverStatus, 2);
-		return s.toByteArray();
-	}
-	
-	/**
-	 * 
-	 */
-	public int getPacketMarker() {
-		return packetMarker;
-	}
+    //
+    private int packetMarker;
+    private int warningCount;
+    private int serverStatus;
 
-	public void setPacketMarker(int packetMarker) {
-		this.packetMarker = packetMarker;
-	}
+    /**
+     *
+     */
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("packetMarker", packetMarker)
+                .append("warningCount", warningCount)
+                .append("serverStatus", serverStatus).toString();
+    }
 
-	public int getWarningCount() {
-		return warningCount;
-	}
+    /**
+     *
+     */
+    public byte[] getPacketBody() {
+        final XSerializer s = new XSerializer(32);
+        s.writeInt(this.packetMarker, 1);
+        s.writeInt(this.warningCount, 2);
+        s.writeInt(this.serverStatus, 2);
+        return s.toByteArray();
+    }
 
-	public void setWarningCount(int warningCount) {
-		this.warningCount = warningCount;
-	}
+    /**
+     *
+     */
+    public int getPacketMarker() {
+        return packetMarker;
+    }
 
-	public int getServerStatus() {
-		return serverStatus;
-	}
+    public void setPacketMarker(int packetMarker) {
+        this.packetMarker = packetMarker;
+    }
 
-	public void setServerStatus(int serverStatus) {
-		this.serverStatus = serverStatus;
-	}
-	
-	/**
-	 * 
-	 */
-	public static EOFPacket valueOf(Packet packet) throws IOException {
-		final XDeserializer d = new XDeserializer(packet.getPacketBody());
-		final EOFPacket r = new EOFPacket();
-		r.length = packet.getLength();
-		r.sequence = packet.getSequence();
-		r.packetMarker = d.readInt(1);
-		r.warningCount = d.readInt(2);
-		r.serverStatus = d.readInt(2);
-		return r;
-	}
+    public int getWarningCount() {
+        return warningCount;
+    }
 
-	public static EOFPacket valueOf(int packetLength, int packetSequence, int packetMarker, XInputStream is) 
-	throws IOException {
-		final EOFPacket r = new EOFPacket();
-		r.length = packetLength;
-		r.sequence = packetSequence;
-		r.packetMarker = packetMarker;
-		r.warningCount = is.readInt(2);
-		r.serverStatus = is.readInt(2);
-		return r;
-	}
+    public void setWarningCount(int warningCount) {
+        this.warningCount = warningCount;
+    }
+
+    public int getServerStatus() {
+        return serverStatus;
+    }
+
+    public void setServerStatus(int serverStatus) {
+        this.serverStatus = serverStatus;
+    }
+
+    /**
+     *
+     */
+    public static EOFPacket valueOf(Packet packet) throws IOException {
+        final XDeserializer d = new XDeserializer(packet.getPacketBody());
+        final EOFPacket r = new EOFPacket();
+        r.length = packet.getLength();
+        r.sequence = packet.getSequence();
+        r.packetMarker = d.readInt(1);
+        r.warningCount = d.readInt(2);
+        r.serverStatus = d.readInt(2);
+        return r;
+    }
+
+    public static EOFPacket valueOf(int packetLength, int packetSequence, int packetMarker, XInputStream is)
+            throws IOException {
+        final EOFPacket r = new EOFPacket();
+        r.length = packetLength;
+        r.sequence = packetSequence;
+        r.packetMarker = packetMarker;
+        r.warningCount = is.readInt(2);
+        r.serverStatus = is.readInt(2);
+        return r;
+    }
 }
