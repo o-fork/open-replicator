@@ -17,9 +17,9 @@
 package com.google.code.or.net;
 
 /**
+ * http://forge.mysql.com/wiki/MySQL_Internals
  *
  * @author Jingqi Xu
- * @see http://forge.mysql.com/wiki/MySQL_Internals
  */
 public interface Transport {
 
@@ -45,7 +45,6 @@ public interface Transport {
      *
      */
     interface Authenticator {
-
         void login(Transport transport) throws Exception;
     }
 }

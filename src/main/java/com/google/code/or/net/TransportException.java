@@ -25,7 +25,7 @@ import java.io.IOException;
  * @author Jingqi Xu
  */
 public class TransportException extends IOException {
-    //
+
     private static final long serialVersionUID = 646149465892278906L;
 
     //

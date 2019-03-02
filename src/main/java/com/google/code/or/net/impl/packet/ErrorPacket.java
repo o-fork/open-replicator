@@ -26,7 +26,6 @@ import com.google.code.or.net.Packet;
 import java.io.IOException;
 
 /**
- *
  * @author Jingqi Xu
  */
 public class ErrorPacket extends AbstractPacket {
@@ -59,6 +58,7 @@ public class ErrorPacket extends AbstractPacket {
     /**
      *
      */
+    @Override
     public byte[] getPacketBody() {
         final XSerializer s = new XSerializer(64);
         s.writeInt(this.packetMarker, 1);

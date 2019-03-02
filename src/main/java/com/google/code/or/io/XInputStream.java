@@ -23,7 +23,6 @@ import com.google.code.or.common.glossary.column.StringColumn;
 import java.io.IOException;
 
 /**
- *
  * @author Jingqi Xu
  */
 public interface XInputStream {

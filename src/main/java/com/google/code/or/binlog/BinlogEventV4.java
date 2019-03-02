@@ -34,6 +34,7 @@ package com.google.code.or.binlog;
  * | data   +----------------------------+
  * |        | variable part              |
  * +=====================================+
+ *
  * @author Jingqi Xu
  */
 public interface BinlogEventV4 {

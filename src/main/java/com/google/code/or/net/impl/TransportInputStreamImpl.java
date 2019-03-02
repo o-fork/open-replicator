@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- *
  * @author Jingqi Xu
  */
 public class TransportInputStreamImpl extends XInputStreamImpl implements TransportInputStream {
@@ -33,30 +32,31 @@ public class TransportInputStreamImpl extends XInputStreamImpl implements Transp
     /**
      *
      */
-    public TransportInputStreamImpl(InputStream is) {
-        super(is);
+    public TransportInputStreamImpl(InputStream inputStream) {
+        super(inputStream);
     }
 
-    public TransportInputStreamImpl(InputStream is, int size) {
-        super(is, size);
+    public TransportInputStreamImpl(InputStream inputStream, int size) {
+        super(inputStream, size);
     }
 
     /**
      *
      */
+    @Override
     public Packet readPacket() throws IOException {
         //
-        final RawPacket r = new RawPacket();
-        r.setLength(readInt(3));
-        r.setSequence(readInt(1));
+        final RawPacket rawPacket = new RawPacket();
+        rawPacket.setLength(readInt(3));
+        rawPacket.setSequence(readInt(1));
 
         //
         int total = 0;
-        final byte[] body = new byte[r.getLength()];
+        final byte[] body = new byte[rawPacket.getLength()];
         while (total < body.length) {
             total += this.read(body, total, body.length - total);
         }
-        r.setPacketBody(body);
-        return r;
+        rawPacket.setPacketBody(body);
+        return rawPacket;
     }
 }

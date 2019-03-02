@@ -4,10 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.code.or.common.glossary.column.StringColumn;
-import com.google.code.or.io.impl.SocketFactoryImpl;
+import com.google.code.or.io.impl.DefaultSocketFactoryImpl;
 import com.google.code.or.net.Packet;
-import com.google.code.or.net.impl.AuthenticatorImpl;
-import com.google.code.or.net.impl.TransportImpl;
+import com.google.code.or.net.impl.DefaultAuthenticatorImpl;
+import com.google.code.or.net.impl.DefaultTransportImpl;
 import com.google.code.or.net.impl.packet.EOFPacket;
 import com.google.code.or.net.impl.packet.ErrorPacket;
 import com.google.code.or.net.impl.packet.ResultSetFieldPacket;
@@ -28,15 +28,15 @@ public class QueryTest {
 	 */
 	public static void main(String args[]) throws Exception {
 		//
-		final AuthenticatorImpl authenticator = new AuthenticatorImpl();
+		final DefaultAuthenticatorImpl authenticator = new DefaultAuthenticatorImpl();
 		authenticator.setUser("xjq");
 		authenticator.setPassword("123456");
 		authenticator.setInitialSchema("test");
 		
 		//
-		final TransportImpl transport = new TransportImpl();
+		final DefaultTransportImpl transport = new DefaultTransportImpl();
 		transport.setAuthenticator(authenticator);
-		transport.setSocketFactory(new SocketFactoryImpl());
+		transport.setSocketFactory(new DefaultSocketFactoryImpl());
 		transport.connect("localhost", 3306);
 		
 		//

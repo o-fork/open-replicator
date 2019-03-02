@@ -26,7 +26,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 /**
- *
  * @author Jingqi Xu
  */
 public class XDeserializer implements XInputStream {
@@ -47,10 +46,12 @@ public class XDeserializer implements XInputStream {
         this.tis.close();
     }
 
+    @Override
     public int available() throws IOException {
         return this.tis.available();
     }
 
+    @Override
     public boolean hasMore() throws IOException {
         return this.tis.hasMore();
     }

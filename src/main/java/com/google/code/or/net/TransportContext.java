@@ -17,7 +17,6 @@
 package com.google.code.or.net;
 
 /**
- *
  * @author Jingqi Xu
  */
 public interface TransportContext {

@@ -19,11 +19,10 @@ package com.google.code.or.net.impl.packet;
 import com.google.code.or.net.Packet;
 
 /**
- *
  * @author Jingqi Xu
  */
 public abstract class AbstractPacket implements Packet {
-    //
+
     private static final long serialVersionUID = -2762990065527029085L;
 
     //
@@ -33,6 +32,7 @@ public abstract class AbstractPacket implements Packet {
     /**
      *
      */
+    @Override
     public int getLength() {
         return length;
     }
@@ -41,6 +41,7 @@ public abstract class AbstractPacket implements Packet {
         this.length = length;
     }
 
+    @Override
     public int getSequence() {
         return sequence;
     }

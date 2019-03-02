@@ -19,15 +19,14 @@ package com.google.code.or.net.impl.packet;
 import com.google.code.or.common.util.ToStringBuilder;
 
 /**
- *
  * @author Jingqi Xu
  */
 public class RawPacket extends AbstractPacket {
-    //
+
     private static final long serialVersionUID = 4109090905397000303L;
 
     //
-    private byte packetBody[];
+    private byte[] packetBody;
 
     /**
      *
@@ -42,6 +41,7 @@ public class RawPacket extends AbstractPacket {
     /**
      *
      */
+    @Override
     public byte[] getPacketBody() {
         return packetBody;
     }

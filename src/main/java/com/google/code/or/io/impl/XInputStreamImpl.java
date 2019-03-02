@@ -57,20 +57,24 @@ public class XInputStreamImpl extends InputStream implements XInputStream {
     /**
      *
      */
+    @Override
     public int readInt(int length) throws IOException {
         return readInt(length, true);
     }
 
+    @Override
     public long readLong(int length) throws IOException {
         return readLong(length, true);
     }
 
+    @Override
     public byte[] readBytes(int length) throws IOException {
         final byte[] r = new byte[length];
         this.read(r, 0, length);
         return r;
     }
 
+    @Override
     public BitColumn readBit(int length) throws IOException {
         return readBit(length, true);
     }
@@ -148,6 +152,7 @@ public class XInputStreamImpl extends InputStream implements XInputStream {
         return r;
     }
 
+    @Override
     public long readLong(int length, boolean littleEndian) throws IOException {
         long r = 0;
         for (int i = 0; i < length; ++i) {
@@ -161,6 +166,7 @@ public class XInputStreamImpl extends InputStream implements XInputStream {
         return r;
     }
 
+    @Override
     public BitColumn readBit(int length, boolean littleEndian) throws IOException {
         byte[] bytes = readBytes((int) ((length + 7) >> 3));
         if (!littleEndian) bytes = CodecUtils.toBigEndian(bytes);
@@ -189,6 +195,7 @@ public class XInputStreamImpl extends InputStream implements XInputStream {
         }
     }
 
+    @Override
     public boolean hasMore() throws IOException {
         if (this.head < this.tail) return true;
         return this.available() > 0;

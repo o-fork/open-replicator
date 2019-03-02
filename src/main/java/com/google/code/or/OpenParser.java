@@ -20,6 +20,8 @@ import com.google.code.or.binlog.BinlogEventListener;
 import com.google.code.or.binlog.BinlogParser;
 import com.google.code.or.binlog.impl.FileBasedBinlogParser;
 import com.google.code.or.binlog.impl.parser.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -28,6 +30,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author Jingqi Xu
  * @author darnaut
  */
+@Getter
+@Setter
 public class OpenParser {
     //
     protected long stopPosition;
@@ -54,7 +58,10 @@ public class OpenParser {
         }
 
         //
-        if (this.binlogParser == null) this.binlogParser = getDefaultBinlogParser();
+        if (this.binlogParser == null) {
+            this.binlogParser = getDefaultBinlogParser();
+        }
+
         this.binlogParser.setEventListener(this.binlogEventListener);
         this.binlogParser.start();
     }
@@ -67,60 +74,6 @@ public class OpenParser {
 
         //
         this.binlogParser.stop(timeout, unit);
-    }
-
-    /**
-     *
-     */
-    public long getStopPosition() {
-        return stopPosition;
-    }
-
-    public void setStopPosition(long position) {
-        this.stopPosition = position;
-    }
-
-    public long getStartPosition() {
-        return startPosition;
-    }
-
-    public void setStartPosition(long position) {
-        this.startPosition = position;
-    }
-
-    public String getBinlogFileName() {
-        return binlogFileName;
-    }
-
-    public void setBinlogFileName(String name) {
-        this.binlogFileName = name;
-    }
-
-    public String getBinlogFilePath() {
-        return binlogFilePath;
-    }
-
-    public void setBinlogFilePath(String path) {
-        this.binlogFilePath = path;
-    }
-
-    /**
-     *
-     */
-    public BinlogParser getBinlogParser() {
-        return binlogParser;
-    }
-
-    public void setBinlogParser(BinlogParser parser) {
-        this.binlogParser = parser;
-    }
-
-    public BinlogEventListener getBinlogEventListener() {
-        return binlogEventListener;
-    }
-
-    public void setBinlogEventListener(BinlogEventListener listener) {
-        this.binlogEventListener = listener;
     }
 
     /**

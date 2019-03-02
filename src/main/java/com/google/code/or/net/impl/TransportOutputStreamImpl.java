@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- *
  * @author Jingqi Xu
  */
 public class TransportOutputStreamImpl extends XOutputStreamImpl implements TransportOutputStream {
@@ -40,10 +39,12 @@ public class TransportOutputStreamImpl extends XOutputStreamImpl implements Tran
     /**
      *
      */
+    @Override
     public void writePacket(Packet packet) throws IOException {
         //
         final byte body[] = packet.getPacketBody();
-        if (body.length < MySQLConstants.MAX_PACKET_LENGTH) { // Single packet
+        // Single packet
+        if (body.length < MySQLConstants.MAX_PACKET_LENGTH) {
             writeInt(body.length, 3);
             writeInt(packet.getSequence(), 1);
             writeBytes(body);
